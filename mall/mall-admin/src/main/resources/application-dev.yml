@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  # MYSQL
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hb-mall
+    username: root
+    password: 123456
+
+
+springdoc:
+  api-docs:
+    #是否开启文档功能
+    enabled: true
+    #swagger后端请求地址
+    path: /api-docs
+  swagger-ui:
+    #自定义swagger前端请求路径，输入http：127.0.0.1:8080/test会自动重定向到swagger页面
+    path: /test
+  #包扫描路径,多个包用,分割
+  packages-to-scan: com.hb.mall.admin.controller
+  #这里定义了两个分组，可定义多个，也可以不定义
+  group-configs:
+    #分组名
+    - group: admin
+      #按路径匹配
+      pathsToMatch: /admin/**
+    - group: default
+      packages-to-scan:
+        - com.hb.mall.admin.controller
+
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn

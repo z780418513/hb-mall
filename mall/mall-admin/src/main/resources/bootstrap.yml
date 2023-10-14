@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: hb-mall-server # 服务名
+  cloud:
+    nacos:
+      username: ${NACOS_USERNAME:} # 用户名
+      password: ${NACOS_PASSWORD:} # 密码
+      config:
+        server-addr: ${NACOS_SERVER_URI} # 注册中心地址
+        namespace: ${NACOS_NAMESPACE} # 命名空间
+        file-extension: yaml # 配置的后缀
+        group: com.hb.mall # 组
+  profiles:
+    active: dev
+
