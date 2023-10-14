@@ -6,6 +6,8 @@ import com.hb.mall.dao.entity.AreaModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 /**
  * @author: zhaochengshui
  * @description area转换器
@@ -16,4 +18,5 @@ public interface AreaConvert {
     AreaConvert MAPPER = Mappers.getMapper(AreaConvert.class);
 
     AreaDTO targetDto(AreaModel areaModel);
+    List<AreaDTO> targetDtoList(List<AreaModel> areaModel);
 }

@@ -24,7 +24,7 @@
         <mybatis-plus-boot-starter.version>3.5.0</mybatis-plus-boot-starter.version>
         <mybatis-plus-generator.version>3.5.1</mybatis-plus-generator.version>
         <redisson-boot.version>3.16.7</redisson-boot.version>
-        <knife4j-openapi3.version>4.3.0</knife4j-openapi3.version>
+        <knife4j-boot.version>2.0.9</knife4j-boot.version>
         <swagger.version>1.5.22</swagger.version>
         <xxl-job-core.version>2.3.0</xxl-job-core.version>
         <jeecg-boot.version>3.0</jeecg-boot.version>
@@ -111,6 +111,14 @@
                         <artifactId>snakeyaml</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <!-- 注意这里是import -->
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.yaml</groupId>
@@ -274,11 +282,6 @@
                 <version>${fastjson.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-http</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>${mapstruct.version}</version>
@@ -288,12 +291,12 @@
                 <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
                 <version>${shardingsphere.version}</version>
             </dependency>
-            <!--swagger3-->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
-                <version>${knife4j-openapi3.version}</version>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-boot.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
