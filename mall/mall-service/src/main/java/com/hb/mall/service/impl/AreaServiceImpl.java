@@ -9,10 +9,11 @@ import com.hb.mall.common.utils.TreeHelper;
 import com.hb.mall.dao.entity.AreaModel;
 import com.hb.mall.dao.mapper.AreaMapper;
 import com.hb.mall.service.AreaService;
-import com.hb.mall.service.convert.AreaConvert;
+import com.hb.mall.service.convert.AreaConvertMapper;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,11 +24,13 @@ import java.util.Objects;
  */
 @Service
 public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaModel> implements AreaService {
+    @Resource
+    private AreaConvertMapper areaConvertMapper;
 
     @Override
     public AreaDTO queryByAreaId(Long areaId) {
         AreaModel areaModel = baseMapper.selectOne(new LambdaQueryWrapper<AreaModel>().eq(AreaModel::getId, areaId));
-        return AreaConvert.MAPPER.targetDto(areaModel);
+        return areaConvertMapper.toTarget(areaModel);
     }
 
     @Override
@@ -37,12 +40,19 @@ public class AreaServiceImpl extends ServiceImpl<AreaMapper, AreaModel> implemen
         }
         List<AreaModel> areaModelList = baseMapper.selectList(new LambdaQueryWrapper<AreaModel>()
                 .eq(AreaModel::getParentId, parentAreaId));
-        return AreaConvert.MAPPER.targetDtoList(areaModelList);
+        return areaConvertMapper.toTargetList(areaModelList);
     }
 
     @Override
     public List<Tree<Long>> queryTreeListByParentAreaId(Long parentAreaId) {
         List<AreaModel> allArealList = baseMapper.selectList(new QueryWrapper<>());
         return TreeHelper.toTreeList(allArealList, parentAreaId);
+    }
+
+    @Override
+    public Boolean add(AreaDTO areaDTO) {
+        AreaModel model = areaConvertMapper.toSource(areaDTO);
+        baseMapper.insert(model);
+        return baseMapper.insert(model) > 0;
     }
 }

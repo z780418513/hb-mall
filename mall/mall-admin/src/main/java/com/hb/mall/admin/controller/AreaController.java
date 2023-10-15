@@ -3,11 +3,10 @@ package com.hb.mall.admin.controller;
 import cn.hutool.core.lang.tree.Tree;
 import com.hb.mall.api.dto.AreaDTO;
 import com.hb.mall.common.core.Result;
+import com.hb.mall.common.core.ValidGroup;
 import com.hb.mall.service.AreaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -55,5 +54,16 @@ public class AreaController {
     @GetMapping("/getTreeList")
     public Result<List<Tree<Long>>> getTreeList(@RequestParam Long areaId) {
         return Result.success(areaService.queryTreeListByParentAreaId(areaId));
+    }
+
+    /**
+     * 新增地区信息
+     *
+     * @param areaDTO areaDTO
+     * @return boolean
+     */
+    @GetMapping("/add")
+    public Result<Boolean> add(@RequestBody @Validated(value = ValidGroup.Add.class) AreaDTO areaDTO) {
+        return Result.success(areaService.add(areaDTO));
     }
 }

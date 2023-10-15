@@ -5,7 +5,7 @@ import com.hb.mall.api.dto.AreaDTO;
 
 import java.util.List;
 
-public interface AreaService  {
+public interface AreaService {
     /**
      * 查询地区信息
      *
@@ -29,5 +29,14 @@ public interface AreaService  {
      * @param parentAreaId 父AreaId
      * @return 所有子级地区内容(树形)
      */
-    List<Tree<Long>> queryTreeListByParentAreaId(Long parentAreaId) ;
+    List<Tree<Long>> queryTreeListByParentAreaId(Long parentAreaId);
+
+
+    /**
+     * 添加地区信息
+     *
+     * @param areaDTO areaDTO
+     * @return boolean
+     */
+    Boolean add(AreaDTO areaDTO);
 }
