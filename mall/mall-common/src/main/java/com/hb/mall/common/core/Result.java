@@ -1,7 +1,7 @@
 package com.hb.mall.common.core;
 
 
-import com.hb.mall.common.constant.SysConstant;
+import com.hb.mall.common.constants.SysConstant;
 import lombok.Data;
 
 import java.io.Serializable;

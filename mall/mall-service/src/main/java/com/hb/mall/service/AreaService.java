@@ -1,5 +1,6 @@
 package com.hb.mall.service;
 
+import cn.hutool.core.lang.tree.Tree;
 import com.hb.mall.api.dto.AreaDTO;
 
 import java.util.List;
@@ -28,5 +29,5 @@ public interface AreaService  {
      * @param parentAreaId 父AreaId
      * @return 所有子级地区内容(树形)
      */
-    List<AreaDTO> queryTreeByParentAreaId(Long parentAreaId);
+    List<Tree<Long>> queryTreeListByParentAreaId(Long parentAreaId) ;
 }

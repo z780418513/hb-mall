@@ -1,5 +1,7 @@
 package com.hb.mall.admin;
 
+import cn.hutool.core.lang.tree.Tree;
+import com.alibaba.fastjson2.JSON;
 import com.hb.mall.api.dto.AreaDTO;
 import com.hb.mall.service.AreaService;
 import lombok.extern.slf4j.Slf4j;
@@ -41,8 +43,9 @@ public class AreaServiceTest {
 
     @Test
     public void queryTreeByParentAreaId(){
-        List<AreaDTO> areaDTOList = areaService.queryTreeByParentAreaId(0L);
-        Assert.assertNotNull("查询为空",areaDTOList);
-        log.info("List: {}",areaDTOList);
+        List<Tree<Long>> trees = areaService.queryTreeListByParentAreaId(0L);
+        Assert.assertNotNull("查询为空",trees);
+        System.out.println(JSON.toJSONString(trees));
     }
 }
+

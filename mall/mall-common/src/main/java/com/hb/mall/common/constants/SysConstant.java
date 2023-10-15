@@ -1,4 +1,4 @@
-package com.hb.mall.common.constant;
+package com.hb.mall.common.constants;
 
 /**
  * @author zhaochengshui

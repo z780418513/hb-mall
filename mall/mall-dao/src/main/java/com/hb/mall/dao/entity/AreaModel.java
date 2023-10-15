@@ -18,8 +18,8 @@ public class AreaModel implements Serializable {
     /**
      * 地区id
      */
-    @TableId(value = "area_id", type = IdType.INPUT)
-    private Long areaId;
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
 
     /**
      * 地区名

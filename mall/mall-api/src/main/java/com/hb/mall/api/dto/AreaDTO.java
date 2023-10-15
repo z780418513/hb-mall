@@ -13,7 +13,7 @@ public class AreaDTO {
     /**
      * 地区id
      */
-    private Long areaId;
+    private Long id;
 
     /**
      * 地区名
